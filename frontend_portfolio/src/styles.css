@@ -1,1 +1,50 @@
 /* You can add global styles to this file, and also import other style files */
+#encabezado {
+    background-color: #00358e;
+}
+
+#logo {
+    width: 120px;
+}
+
+.redes-img {
+    padding: 2px; 
+    font-size: 2em; 
+    color: white;
+}
+
+
+#encabezado-img {
+    min-height: 78vh;
+    background:url('assets/images/banner.jpg'); 
+    background-size: cover;
+}
+
+
+#user-img {
+    padding: 2px; 
+    font-size: 1.5em; 
+    color: white;
+}
+
+.accion-ico {
+    font-size: 1.2em; 
+    
+}
+
+#login-img {
+    padding: 1px; 
+    font-size: 5em; 
+    color: #157347;
+}
+
+.pie-pagina {
+    min-height: 30vh;
+}
+
+
+
+
+
+
+
