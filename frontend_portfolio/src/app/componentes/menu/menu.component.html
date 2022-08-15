@@ -1,0 +1,110 @@
+ <!-- menu -->
+ <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Navegacion">
+            <span class="navbar-toggler-icon"></span>
+        </button> 
+
+        <div class="collapse navbar-collapse" id="navbarToggler">
+            <ul class="navbar-nav mb-2 mb-lg-0 me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Acerca de mi</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Experiencia</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Educacion</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Skills</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Proyectos</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- data-bs-toggle="modal" 
+        data-bs-target="#login-modal"  -->
+
+        <button 
+            type="button" 
+            class="btn btn-dark" 
+            (click)="abrirLoginModal()"
+            data-bs-toggle="tooltip" 
+            data-bs-placement="top" 
+            title="Ingreso a usuarios"
+        >
+        
+            <span id="user-img" class="ms-auto">
+                <i class="fa-solid fa-circle-user"></i>
+            </span>
+        </button>     
+          
+        <!-- Login Modal -->
+        <div class="modal fade" id="login-modal" tabindex="-1" aria-labelledby="login-modal-label" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    
+                    <div class="modal-header">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col d-flex justify-content-end ">
+                                    <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col d-flex justify-content-center">
+                                    <span id="login-img">
+                                        <i class="fa-solid fa-house-user"></i>
+                                    </span>
+                                  
+                                </div>
+                                  
+                            </div>
+
+                            <div class="row">
+                                <div class="col d-flex justify-content-center ">
+                                    <h4 class="modal-title" id="login-modal-label">Ingreso de Usuarios</h4>
+                                </div>
+                                
+                            </div>
+
+                        </div>      
+                    
+                    </div>
+                                        
+                    <!-- formulario de login -->
+                    <form action="">
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="Username">Nombre de usuario<span class="text-danger">*</span></label>
+                                <input type="text" name="username" class="form-control" id="Username" placeholder="Nombre de usuario">
+                            </div>
+                  
+                            <div class="mb-3">
+                                <label for="Password">Contraseña<span class="text-danger">*</span></label>
+                                <input type="password" name="password" class="form-control" id="Password" placeholder="Contraseña">
+                            </div>
+                              
+                            <div class="modal-footer pt-2">                  
+                                <button type="button" class="btn btn-success mx-auto w-100">Ingresar</button>
+                                
+                            </div>
+                            <div class="p-2 text-center">
+                                <small>
+                                    Credenciales de prueba para acceso al sitio:<br>
+                                    Usuario: <strong>portfolio</strong>  Contraseña: <strong>portfolio</strong> 
+                                </small>
+                            </div>
+                        </div>    
+                    </form>    
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<!-- menu -->
