@@ -25,6 +25,8 @@ export class MenuComponent implements OnInit {
     abrirLoginModal() {
         this.loginModal.show();
     }
+
+    
     
     
 }

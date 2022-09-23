@@ -10,23 +10,26 @@ import { EducacionComponent } from './componentes/educacion/educacion.component'
 import { HabilidadesComponent } from './componentes/habilidades/habilidades.component';
 import { ProyectosComponent } from './componentes/proyectos/proyectos.component';
 import { PiedepaginaComponent } from './componentes/piedepagina/piedepagina.component';
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    EncabezadoComponent,
-    MenuComponent,
-    AcercademiComponent,
-    ExperienciaComponent,
-    EducacionComponent,
-    HabilidadesComponent,
-    ProyectosComponent,
-    PiedepaginaComponent
-  ],
-  imports: [
-    BrowserModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        EncabezadoComponent,
+        MenuComponent,
+        AcercademiComponent,
+        ExperienciaComponent,
+        EducacionComponent,
+        HabilidadesComponent,
+        ProyectosComponent,
+        PiedepaginaComponent
+    ],
+    imports: [
+        BrowserModule,
+        HttpClientModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
+
 export class AppModule { }
