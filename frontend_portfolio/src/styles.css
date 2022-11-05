@@ -23,7 +23,7 @@
 
 #user-img {
     padding: 2px; 
-    font-size: 1.5em; 
+    /*font-size: 1.5em;*/
     color: white;
 }
 
@@ -34,8 +34,8 @@
 
 #login-img {
     padding: 1px; 
-    font-size: 5em; 
-    color: #157347;
+    font-size: 5em;
+    color: #0b5ed7;
 }
 
 .pie-pagina {

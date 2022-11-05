@@ -30,7 +30,9 @@
         </div>
 
         <!-- data-bs-toggle="modal" 
-        data-bs-target="#login-modal"  -->
+        data-bs-target="#login-modal"  
+        (click)="abrirLoginModal()"
+        -->
 
         <button 
             type="button" 
@@ -38,14 +40,37 @@
             (click)="abrirLoginModal()"
             data-bs-toggle="tooltip" 
             data-bs-placement="top" 
-            title="Ingreso a usuarios"
+            title="Ingreso usuarios"
+            *ngIf="!isLogged"
         >
-        
-            <span id="user-img" class="ms-auto">
-                <i class="fa-solid fa-circle-user"></i>
+            <span id="user-img" class="p-2">
+                <i class="fa-solid fa-circle-user" style='font-size:35px; vertical-align: middle;'></i>
             </span>
-        </button>     
-          
+        </button>
+
+        <small 
+            class="text-light"
+            *ngIf="isLogged"
+        >
+            Bienvenido {{nombreUsuario}}
+        </small> 
+        
+        <button 
+            type="button" 
+            class="btn btn-dark" 
+            (click)="onLogOut()"
+            data-bs-toggle="tooltip" 
+            data-bs-placement="top" 
+            title="Cerrar sesion"
+            
+            *ngIf="isLogged"
+        >
+            
+            <span id="user-img" class="p-2">
+                <i class="fa-solid fa-right-from-bracket" style='font-size:35px; vertical-align: middle;'></i>
+            </span>
+        </button>
+        
         <!-- Login Modal -->
         <div class="modal fade" id="login-modal" tabindex="-1" aria-labelledby="login-modal-label" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -80,26 +105,45 @@
                     </div>
                                         
                     <!-- formulario de login -->
-                    <form action="">
+                    <form #f = "ngForm" (ngSubmit) = "onLogin()" novalidate>
+
                         <div class="modal-body">
                             <div class="mb-3">
-                                <label for="Username">Nombre de usuario<span class="text-danger">*</span></label>
-                                <input type="text" name="username" class="form-control" id="Username" placeholder="Nombre de usuario">
+                                <label for="nombreUsuario">Nombre de usuario<span class="text-danger">*</span></label>
+                                <input 
+                                    type            = "text" 
+                                    id              = "nombreUsuario" 
+                                    name            = "nombreUsuario"  
+                                    class           = "form-control"  
+                                    placeholder     = "Nombre de usuario" 
+                                    [(ngModel)]     = "nombreUsuario" 
+                                    required 
+                                />
                             </div>
                   
                             <div class="mb-3">
-                                <label for="Password">Contraseña<span class="text-danger">*</span></label>
-                                <input type="password" name="password" class="form-control" id="Password" placeholder="Contraseña">
+                                <label for="password">Contraseña<span class="text-danger">*</span></label>
+                                <input 
+                                    type        = "password" 
+                                    id          = "password"
+                                    name        = "password" 
+                                    class       = "form-control" 
+                                    placeholder = "Contraseña"
+                                    [(ngModel)] = "password"
+                                    required 
+                                />
                             </div>
                               
                             <div class="modal-footer pt-2">                  
-                                <button type="button" class="btn btn-success mx-auto w-100">Ingresar</button>
+                                <button type="submit" class="btn btn-primary mx-auto w-100" data-dismiss="login-modal">
+                                    Ingresar
+                                </button>
                                 
                             </div>
                             <div class="p-2 text-center">
                                 <small>
                                     Credenciales de prueba para acceso al sitio:<br>
-                                    Usuario: <strong>portfolio</strong>  Contraseña: <strong>portfolio</strong> 
+                                    Usuario: <strong>admin</strong>  Contraseña: <strong>admin</strong> 
                                 </small>
                             </div>
                         </div>    
@@ -107,6 +151,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 </nav>
 <!-- menu -->

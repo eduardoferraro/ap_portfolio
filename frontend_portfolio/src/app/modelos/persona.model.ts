@@ -1,15 +1,15 @@
 export class persona {
-    id: number;
-    nombre: String;
-    apellido: String;
+    id?: number;
+    nombre: string;
+    apellido: string;
     fechaNacimiento: Date;
-    telefono: String;
-    email: String;
-    imagenPersona: String;
-    textoPersona: String;
-    textoHabilidad: String;
+    telefono: string;
+    email: string;
+    imagenPersona: string;
+    textoPersona: string;
+    textoHabilidad: string;
 
-    constructor(nombre:String, apellido:String, fechaNacimiento: Date, telefono: String, email: String, imagenPersona: String, textoPersona: String, textoHabilidad: String) {
+    constructor(nombre:string, apellido:string, fechaNacimiento: Date, telefono: string, email: string, imagenPersona: string, textoPersona: string, textoHabilidad: string) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.fechaNacimiento = fechaNacimiento;
@@ -21,6 +21,10 @@ export class persona {
     
 
     }
+    
+    
+
+
     
 
 

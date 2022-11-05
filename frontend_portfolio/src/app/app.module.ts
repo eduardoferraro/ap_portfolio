@@ -10,7 +10,12 @@ import { EducacionComponent } from './componentes/educacion/educacion.component'
 import { HabilidadesComponent } from './componentes/habilidades/habilidades.component';
 import { ProyectosComponent } from './componentes/proyectos/proyectos.component';
 import { PiedepaginaComponent } from './componentes/piedepagina/piedepagina.component';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from './app-routing.module';
+import { LoginComponent } from './componentes/login/login.component';
+import { InicioComponent } from './componentes/inicio/inicio.component';
+import { FormsModule } from '@angular/forms';
+import { interceptorProvider } from './servicios/interceptor-service';
 
 @NgModule({
     declarations: [
@@ -22,13 +27,19 @@ import { HttpClientModule } from '@angular/common/http'
         EducacionComponent,
         HabilidadesComponent,
         ProyectosComponent,
-        PiedepaginaComponent
+        PiedepaginaComponent,
+        LoginComponent,
+        InicioComponent
     ],
     imports: [
         BrowserModule,
-        HttpClientModule
+        HttpClientModule,
+        AppRoutingModule,
+        FormsModule
     ],
-    providers: [],
+    providers: [
+        interceptorProvider
+    ],
     bootstrap: [AppComponent]
 })
 
