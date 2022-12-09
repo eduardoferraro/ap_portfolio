@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { persona } from 'src/app/modelos/persona.model';
+import { PersonaModel } from 'src/app/modelos/persona.model';
 import { PersonaService } from 'src/app/servicios/persona.service';
+import { TokenService } from 'src/app/servicios/token.service';
 
 @Component({
     selector: 'app-acercademi',
@@ -8,13 +9,27 @@ import { PersonaService } from 'src/app/servicios/persona.service';
     styleUrls: ['./acercademi.component.css']
 })
 export class AcercademiComponent implements OnInit {
-    private fecha = new Date('01-01-1900');
-    persona: persona = new persona("","",this.fecha,"","","","","");
+    
+    personaModel: PersonaModel = null;
 
-    constructor(public personaService: PersonaService) { }
+    constructor(private personaService: PersonaService, private tokenService: TokenService) { }
+
+    isLogged = false;
 
     ngOnInit(): void {
-        this.personaService.getPersona().subscribe(data => {this.persona = data});
+        this.cargarPersona();
+        
+        if (this.tokenService.getToken()) {
+            this.isLogged = true;
+        } else {
+            this.isLogged = false;
+        }
     }
+
+    cargarPersona(): void {
+        this.personaService.detail(1).subscribe(data => { this.personaModel = data; })
+    }
+
+    
 
 }

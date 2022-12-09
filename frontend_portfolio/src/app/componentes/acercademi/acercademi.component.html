@@ -1,39 +1,62 @@
   <!-- acercademi -->
-  <div class="container-fluid" id="acerca">
+  <div class="container-fluid" id="acerca" *ngIf="personaModel">
     <div class="row border-bottom">
-        <div class="col-sm-3 p-4 d-flex justify-content-center align-items-center">     
+        <div class="col-sm-3 d-flex justify-content-center align-items-center">     
             <div class="col-8">
-                <img class="img-fluid rounded-circle mx-auto d-block" src="assets/images/user.png" alt="">
                 
+                <img class="img-fluid rounded-circle mx-auto d-block" src="{{personaModel.imagenPersona}}" alt="">
+                               
                 <div class="d-flex justify-content-center align-items-center pt-4">
-                    <a href="#top" class="text-dark ">
-                        <button type="button" class="btn btn-dark btn-sm" data-toggle="tooltip" data-placement="top" title="Arriba">
+                    <a href="#top">
+                        <button type="button" id="btn_arriba" class="btn btn-sm" data-toggle="tooltip" data-placement="top" title="Arriba">
                             <span class="accion-ico">
-                                <i class="fa-solid fa-circle-up fa-sm"></i>&nbsp; Arriba
+                                &nbsp;<i class="fa-solid fa-circle-up fa-sm"></i>&nbsp;
                             </span>    
                         </button>
                     </a>   
                 </div>
                 
+            </div>
+            
+            <div class="col-1 d-flex justify-content-center" >
             </div> 
 
-            <div class="col-1 d-flex justify-content-center" >
-                <a href="#" class="text-dark ">
-                    <span class="accion-ico">
-                        <i class="fa-solid fa-pen-to-square"></i>
-                    </span>
-                
-                </a>
-                     
-            </div>
+
+           
         </div>
         
         <div class="col-sm-9 p-4">
             <div class="row pt-3 pb-3">
-                <div class="col-12 d-flex justify-content-start "> 
-                    <h2>{{persona.nombre + ' ' + persona.apellido}}</h2>
+                <div class="col-10 d-flex justify-content-start "> 
+                    <h2>{{personaModel.nombre + ' ' + personaModel.apellido}}</h2>
                     
                 </div>
+            
+
+                <div class="col-1 d-flex justify-content-center" >
+                </div>
+                
+                <div class="col-1 d-flex justify-content-center" *ngIf="isLogged">
+                    <button 
+                        type="button" 
+                        class="btn  btn-sm btn-normal border-0" 
+                        data-bs-toggle="tooltip" 
+                        data-bs-placement="top" 
+                        title="Modificar datos persona"
+                        routerLink="/editaracercademi/1"
+                        
+                    >
+                        <span>
+                            <i class="fa-solid fa-pen-to-square" style='font-size:20px; vertical-align: middle;'></i>
+                        </span>
+                    </button>
+                                             
+                </div>
+            
+            
+            
+            
+            
             </div>
             
             <div class="row pt-3 pb-3">
@@ -42,20 +65,20 @@
                     <div class="row row-cols-1 row-cols-md-2 g-4 pt-3 pb-3">
                         <div class="col">
                             <div class="card h-100">
-                                <div class="card-header bg-primary text-light"><h5>Datos Personales</h5></div>
+                                <div id="acerca_header" class="card-header text-light"><h5>Datos Personales</h5></div>
                                 <div class="card-body">
-                                    <p class="card-text text-small">Fecha de nacimiento: 13/05/1970</p>
-                                    <p class="card-text">Edad: 13/05/1970</p>
+                                    <p class="card-text text-small">Edad: {{personaModel.edad}} años</p>
+                                    <p class="card-text">Residencia: {{personaModel.residencia}}</p>
                                 </div>
                             </div>
                         </div>
                         
                         <div class="col">
                             <div class="card h-100">
-                                <div class="card-header bg-primary text-light"><h5>Datos de Contacto</h5></div>
+                                <div id="acerca_header" class="card-header text-light"><h5>Datos de Contacto</h5></div>
                                 <div class="card-body">
-                                    <p class="card-text">Telefono: 11 522334455</p>
-                                    <p class="card-text">Email: usuario@dominio.com</p>
+                                    <p class="card-text">Telefono: {{personaModel.telefono}}</p>
+                                    <p class="card-text">Email: {{personaModel.email}}</p>
                                 </div>
                             </div>
                         </div>
@@ -64,24 +87,11 @@
                 </div>
 
                 <div class="col-1 d-flex justify-content-center" >
-                    <a href="#" class="text-dark ">
-                        <span class="accion-ico">
-                            <i class="fa-solid fa-pen-to-square"></i>
-                        </span>
-                    
-                    </a>
-                        
                 </div>
+
                 <div class="col-1 d-flex justify-content-center" >
-                    <a href="#" class="text-dark ">
-                        <span class="accion-ico">
-                            <i class="fa-solid fa-trash-can"></i>
-                        </span>
-                    
-                    </a>
-                        
                 </div>
-                
+                                
             </div>
 
 
@@ -91,33 +101,15 @@
             <div class="row pt-3 pb-3">
                 <div class="col-10">
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut lobortis dui at molestie aliquet. Sed a dui blandit, 
-                        mattis metus vitae, maximus elit. Vestibulum id sodales magna. Ut at massa convallis, pretium enim sit amet, accumsan metus.
-                        Ut eu ipsum feugiat, semper lacus sit amet, luctus ante. Aenean porta tellus ligula, sed commodo ipsum maximus non. 
-                        Vivamus aliquam erat nibh, ac rutrum odio dapibus ut. Suspendisse vel turpis tortor. Suspendisse non lectus auctor, 
-                        malesuada odio sed, posuere odio. Donec dapibus massa non mauris hendrerit pulvinar. Praesent ullamcorper, purus nec sodales 
-                        mollis, nulla risus congue nibh, eu pellentesque eros mauris eget arcu. Integer accumsan eros neque, 
-                        vel tincidunt tortor sollicitudin vel. Phasellus felis tortor, finibus at tortor sit amet, venenatis laoreet purus.
+                        {{personaModel.textoPersona}}
     
                     </p> 
                 </div>
+
                 <div class="col-1 d-flex justify-content-center" >
-                    <a href="#" class="text-dark ">
-                        <span class="accion-ico">
-                            <i class="fa-solid fa-pen-to-square"></i>
-                        </span>
-                    
-                    </a>
-                         
                 </div>
+                
                 <div class="col-1 d-flex justify-content-center" >
-                    <a href="#" class="text-dark ">
-                        <span class="accion-ico">
-                            <i class="fa-solid fa-trash-can"></i>
-                        </span>
-                    
-                    </a>
-                         
                 </div>
 
                 

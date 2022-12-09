@@ -4,6 +4,7 @@ import { LoginUsuario } from 'src/app/modelos/login-usuario';
 import { AuthService } from 'src/app/servicios/auth.service';
 import { TokenService } from 'src/app/servicios/token.service';
 
+
 //menu
 declare var window: any;
 
@@ -32,9 +33,6 @@ export class MenuComponent implements OnInit {
     //login
     constructor(private tokenService: TokenService, private authService: AuthService, private router: Router) { }
 
-    //menu
-    //constructor() { }
-
     ngOnInit(): void {
 
         //login - logout
@@ -59,12 +57,11 @@ export class MenuComponent implements OnInit {
        
     }
 
-     //modal
-     cerrarLoginModal() :void {
+    //modal
+    cerrarLoginModal() :void{
         this.loginModal.hide();
        
     }
-    
 
     //login
     onLogin(): void {
@@ -76,18 +73,23 @@ export class MenuComponent implements OnInit {
             this.tokenService.setUsername(data.nombreUsuario);
             this.tokenService.setAuthorities(data.authorities);
             this.roles = data.authorities;
+            
+            this.cerrarLoginModal();
+
+            window.location.reload();
+            
+            /* 
             console.log(this.nombreUsuario);
             console.log(this.password);
-            console.log(this.roles);
-            this.cerrarLoginModal();
-            //this.router.navigate([''])
-        
+            console.log(this.roles); 
+            */
+  
         }, err => {
             this.isLogged = false;
             this.isLoginFail = true;
-            this.errMsj = err.error.mensaje;
-            console.log(this.errMsj);
-            
+            alert("Error en las credenciales");
+            /* window.location.reload(); */
+           
         })
 
          

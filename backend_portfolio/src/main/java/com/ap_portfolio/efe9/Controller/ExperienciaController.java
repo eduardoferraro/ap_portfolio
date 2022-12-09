@@ -63,8 +63,8 @@ public class ExperienciaController {
                 dtoExperiencia.getNombreEmpresa(), 
                 dtoExperiencia.getDescripcionExperiencia(), 
                 dtoExperiencia.getAnioDesde(), 
-                dtoExperiencia.getAnioHasta(), 
                 dtoExperiencia.getMesDesde(),
+                dtoExperiencia.getAnioHasta(), 
                 dtoExperiencia.getMesHasta(),
                 dtoExperiencia.getEsActual()
         );
@@ -90,6 +90,11 @@ public class ExperienciaController {
         Experiencia experiencia = implExperienciaService.getOne(id).get();
         experiencia.setNombreEmpresa(dtoExperiencia.getNombreEmpresa());
         experiencia.setDescripcionExperiencia((dtoExperiencia.getDescripcionExperiencia()));
+        experiencia.setAnioDesde(dtoExperiencia.getAnioDesde());
+        experiencia.setMesDesde(dtoExperiencia.getMesDesde());
+        experiencia.setAnioHasta(dtoExperiencia.getAnioHasta());
+        experiencia.setMesHasta(dtoExperiencia.getMesHasta());
+        experiencia.setEsActual(dtoExperiencia.getEsActual());
         
         implExperienciaService.save(experiencia);
         return new ResponseEntity(new Mensaje("Experiencia actualizada"), HttpStatus.OK);

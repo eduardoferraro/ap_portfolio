@@ -1,6 +1,5 @@
 package com.ap_portfolio.efe9.Entity;
 
-import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,44 +11,60 @@ import javax.validation.constraints.Size;
 public class Persona {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     
     @NotNull
-    @Size(min = 1, max = 50, message = "Error de validacion en nombre")
+    @Size(min = 1, max = 50, message = "Error de validacion en nombre (Maximo 50 caracteres)")
     private String nombre;
     
     @NotNull
-    @Size(min = 1, max = 50, message = "Error de validacion en apellido")
+    @Size(min = 1, max = 50, message = "Error de validacion en apellido (Maximo 50 caracteres)")
     private String apellido;
     
     @NotNull
-    private Date fechaNacimiento;
+    @Size(min = 2, max = 3, message = "Error de validacion en edad (3 caracteres)")
+    private String edad;
     
     @NotNull
-    @Size(min = 10, max = 15, message = "Error de validacion en telefono")
+    @Size(min = 1, max = 50, message = "Error de validacion en residencia.(Maximo 50 caracteres)")
+    private String residencia;
+    
+    @NotNull
+    @Size(min = 10, max = 15, message = "Error de validacion en telefono (Maximo 15 caracteres)")
     private String telefono;
     
     @NotNull
-    @Size(min = 8, max = 50, message = "Error de validacion en email")
+    @Size(min = 7, max = 50, message = "Error de validacion en email (Maximo 50 caracteres)")
     private String email;
     
     @NotNull
-    @Size(min = 1, max = 50, message = "Error de validacion en imagen")
+    @Size(min = 10, max = 500, message = "Error de validacion en imagen. (Maximo 500 caracteres)")
     private String imagenPersona;
     
     @NotNull
-    @Size(min = 1, max = 400, message = "Error de validacion en texto de persona")
+    @Size(min = 5, max = 500, message = "Error de validacion en texto persona. (Maximo 500 caracteres)")
     private String textoPersona;
     
-    @NotNull
-    @Size(min = 1, max = 400, message = "Error de validacion en texto de habilidad")
-    private String textoHabilidad;
+    public Persona() {
+    }
 
-    public Long getId() {
+    public Persona(String nombre, String apellido, String edad, String residencia, String telefono, String email, String imagenPersona, String textoPersona, String textoHabilidad) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.edad = edad;
+        this.residencia = residencia;
+        this.telefono = telefono;
+        this.email = email;
+        this.imagenPersona = imagenPersona;
+        this.textoPersona = textoPersona;
+   
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -67,6 +82,22 @@ public class Persona {
 
     public void setApellido(String apellido) {
         this.apellido = apellido;
+    }
+
+    public String getEdad() {
+        return edad;
+    }
+
+    public void setEdad(String edad) {
+        this.edad = edad;
+    }
+
+    public String getResidencia() {
+        return residencia;
+    }
+
+    public void setResidencia(String residencia) {
+        this.residencia = residencia;
     }
 
     public String getTelefono() {
@@ -97,26 +128,9 @@ public class Persona {
         return textoPersona;
     }
 
-    public void setTextoPersona(String textoPesona) {
-        this.textoPersona = textoPesona;
+    public void setTextoPersona(String textoPersona) {
+        this.textoPersona = textoPersona;
     }
-
-    public String getTextoHabilidad() {
-        return textoHabilidad;
-    }
-
-    public void setTextoHabilidad(String textoHabilidad) {
-        this.textoHabilidad = textoHabilidad;
-    }
-
-    public Date getFechaNacimiento() {
-        return fechaNacimiento;
-    }
-
-    public void setFechaNacimiento(Date fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
-    }
-    
 
     
          

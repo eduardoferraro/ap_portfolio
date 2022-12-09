@@ -5,13 +5,20 @@ import javax.validation.constraints.NotBlank;
 public class DtoExperiencia {
     @NotBlank
     private String nombreEmpresa;
+    
     @NotBlank
     private String descripcionExperiencia;
     
+    @NotBlank
     private String anioDesde;
+    
+    @NotBlank
     private String mesDesde;
+    
     private String anioHasta;
+    
     private String mesHasta;
+    
     private Boolean esActual;
     
     

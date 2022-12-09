@@ -1,21 +1,31 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { persona } from '../modelos/persona.model';
+import { PersonaModel } from '../modelos/persona.model';
+
+
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 
 export class PersonaService {
-    url = "http://localhost:8080/personas/";
-  
-    constructor(private http: HttpClient) { }
+    URL = "http://localhost:8080/persona/";
 
-    public getPersona(): Observable <persona> {
+    constructor(private httpClient: HttpClient) { }
 
-        return this.http.get<persona>(this.url+'perfil');
-        
+    public lista(): Observable<PersonaModel[]> {
+        return this.httpClient.get<PersonaModel[]>(this.URL + 'lista');
     }
+
+    public detail(id: number): Observable<PersonaModel> {
+        return this.httpClient.get<PersonaModel>(this.URL + `detalle/${id}`);
+    }
+
+    public update(id: number, persona: PersonaModel): Observable<any> {
+        return this.httpClient.put<any>(this.URL + `editar/${id}`, persona);
+    }
+
+
 
 }

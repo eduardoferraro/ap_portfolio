@@ -1,5 +1,5 @@
    <!-- proyectos -->
-   <div class="container-fluid" id="proyectos">
+   <div class="container-fluid" id="proyectos" *ngIf="proyectoModel">
     <div class="row border-bottom">
         <div class="col-sm-3 d-flex justify-content-center align-items-center">
             <div class="col-8">
@@ -7,111 +7,99 @@
 
                 <div class="d-flex justify-content-center align-items-center pt-4">
                     <a href="#top" class="text-dark ">
-                        <button type="button" class="btn btn-dark btn-sm" data-toggle="tooltip" data-placement="top" title="Arriba">
+                        <button type="button" id="btn_arriba" class="btn btn-sm" data-toggle="tooltip" data-placement="top" title="Arriba">
                             <span class="accion-ico">
-                                <i class="fa-solid fa-circle-up fa-sm"></i>&nbsp; Arriba
+                                &nbsp;<i class="fa-solid fa-circle-up fa-sm"></i>&nbsp;
                             </span>    
                         </button>
                     </a>   
                 </div>
 
             </div>
-           <!--  <div class="col-1 d-flex justify-content-center" >
-                <a href="#" class="text-dark ">
-                    <span class="accion-ico">
-                        <i class="fa-solid fa-pen-to-square"></i>
-                    </span>
-                
-                </a>
-                     
-            </div> -->
+           
         </div>
         
         <div class="col-sm-9 p-4 bg-light">
-            <div class="row pt-3 pb-3">
-                <div class="col-11 d-flex justify-content-start">
-                    <h2>Proyectos</h2> 
+            <div class="row pt-3 pb-3  align-content-center">
+                <div class="col-10 d-flex justify-content-start">
+                    <h1 class="display-4">Proyectos</h1> 
                 </div>
                 
                 
                 <div class="col-1 d-flex justify-content-center" >
-                    <a href="#" class="text-dark ">
-                        <span class="accion-ico">
-                            <i class="fa-solid fa-plus"></i>
+                </div>
+                
+                <div class="col-1 d-flex justify-content-center" *ngIf="isLogged" >
+                    <button 
+                        type="button" 
+                        class="btn  btn-sm btn-grey border-0" 
+                        data-bs-toggle="tooltip" 
+                        data-bs-placement="top" 
+                        title="Agregar proyecto"
+                        routerLink="/nuevoproyecto"
+                        
+                    >
+                        <span>
+                            <i class="fa-solid fa-plus" style='font-size:20px; vertical-align: middle;'></i>
                         </span>
-                    
-                    </a>
-                         
+                    </button>
+                                             
                 </div>
 
             </div>
+
 
              <!-- input datos dinamicos -->
 
-            <div class="row">
+            <div class="row"  *ngFor="let pro of proyectoModel">
                 <div class="col-10">
-                    <h5>De Arco a Arco </h5>
-                    <h6>2020</h6>
+                    <h5>{{pro.nombreProyecto}}</h5>
+                    <h6>{{pro.anio}}</h6>
             
                     <p>
-                        Sitio web institucional desarrollado en Joomla, que permite ademas cargar y exhibir la informacion
-                        estadistica de los torneos de futbol de distintas categorias organizados por la empresa.
+                        {{pro.descripcionProyecto}}
                     </p>
                     
-                    <div class="alert alert-primary" role="alert">
-                        Enlace al sitio web del proyecto: <a href="#" class="alert-link">De Arco a Arco </a>
+                    <div class="alert text-light" role="alert" style="background-color:#0b6a82;">   
+                            Enlace al sitio web del proyecto: <a href="{{pro.linkProyecto}}" target="_blank" class="text-light fw-bold">{{pro.nombreProyecto}} </a> 
                     </div>
                 
                 </div>
-                <div class="col-1 d-flex justify-content-center" >
-                    <a href="#" class="text-dark ">
-                        <span class="accion-ico">
-                            <i class="fa-solid fa-pen-to-square"></i>
-                        </span>
-                    
-                    </a>
-                </div>
-                <div class="col-1 d-flex justify-content-center" >
-                    <a href="#" class="text-dark ">
-                        <span class="accion-ico">
-                            <i class="fa-solid fa-trash-can"></i>
-                        </span>
-                    </a>
-                </div>    
-            </div>
-            <div class="row">
-                <div class="col-10">
-                    <h5>Club Gimnasia y Esgrima de Buenos Aires</h5>
-                    <h6>2020</h6>
-                    <p>    
-                        Vivamus aliquam erat nibh, ac rutrum odio dapibus ut. Suspendisse vel turpis tortor. Suspendisse non lectus auctor, 
-                        malesuada odio sed, posuere odio. Donec dapibus massa non mauris hendrerit pulvinar. Praesent ullamcorper, purus nec sodales 
-                        mollis, nulla risus congue nibh, eu pellentesque eros mauris eget arcu. Integer accumsan eros neque, 
-                        vel tincidunt tortor sollicitudin vel. Phasellus felis tortor, finibus at tortor sit amet, venenatis laoreet purus.
-    
-                    </p>
-                    <div class="alert alert-primary" role="alert">
-                        Enlace al sitio web del proyecto: <a href="#" class="alert-link">GEBA Futbol interno</a>
-                    </div> 
-                </div>
-                <div class="col-1 d-flex justify-content-center" >
-                    <a href="#" class="text-dark ">
-                        <span class="accion-ico">
-                            <i class="fa-solid fa-pen-to-square"></i>
-                        </span>
-                    
-                    </a>
-                </div>
-                <div class="col-1 d-flex justify-content-center" >
-                    <a href="#" class="text-dark ">
-                        <span class="accion-ico">
-                            <i class="fa-solid fa-trash-can"></i>
-                        </span>
-                    </a>
-                </div>    
 
-            </div>
+                <div class="col-1 d-flex justify-content-center" *ngIf="isLogged">
+                    
+                    <button 
+                        type="button" 
+                        class="btn  btn-sm btn-grey border-0" 
+                        data-bs-toggle="tooltip" 
+                        data-bs-placement="top" 
+                        title="Modificar proyecto"
+                        routerLink="/editarproyecto/{{pro.idProyecto}}"
+                    >
+                        <span>
+                            <i class="fa-solid fa-pen-to-square" style='font-size:20px; vertical-align: middle;'></i>
+                        </span>
+                    </button>
+                </div>
             
+                <div class="col-1 d-flex justify-content-center" *ngIf="isLogged">
+                    
+                    <button 
+                        type="button" 
+                        class="btn  btn-sm btn-grey border-0" 
+                        data-bs-toggle="tooltip" 
+                        data-bs-placement="top" 
+                        title="Eliminar proyecto"
+                        (click)="borrar(pro.idProyecto)"
+                        
+                    >
+                        <span>
+                            <i class="fa-solid fa-trash-can" style='font-size:20px; vertical-align: middle;'></i>
+                        </span>
+                    </button>
+                    
+                </div>
+            </div>
         </div>
     </div>
     
